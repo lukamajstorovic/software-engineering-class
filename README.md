@@ -40,8 +40,8 @@ or delete the repo directory using a File Explorer
 
 ```
 git remote add upstream https://gitlab.com/levara/se-labs-2223-sr
-git fetch upstream main
-git merge upstream/main
+git fetch upstream master
+git merge upstream/master
 ```
 
 The first line will add the original repo as additional remote repository to your project.
@@ -49,9 +49,9 @@ The first line will add the original repo as additional remote repository to you
 will be called `upstream`.
 
 Second line will fetch the changes from the `upstream` repo which will be saved to
-branch `upstream/main`.
+branch `upstream/master`.
 
-Third line will merge the changes from your original repo to the `main` branch on
+Third line will merge the changes from your original repo to the `master` branch on
 your computer. All the changes should be added without conflicts or collisions.
 The changes will be merged to your local repository on your computer.
 
@@ -64,7 +64,7 @@ file ( `ctrl + x` -> `y` to save changes -> `enter` to confirm the suggested fil
 To push the changes to your gitlab repository run:
 
 ```
-git push origin main
+git push origin master
 ```
 
 After running this command all the changes imported from the original repository to
