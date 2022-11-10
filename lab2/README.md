@@ -183,6 +183,10 @@ class Employee:
         self.title = title
         self.age = age
         self.office = office
+    
+    def as_dict(self):
+        # Returns the attributes as a dictionary
+        pass
 
     def __str__(self):
         return f"{self.name} ({self.age}), {self.title} @ {self.office}"
@@ -207,9 +211,16 @@ class Company:
                 self.employees.remove(e)
 
     def load_from_json(self, path_to_json):
+        # Loads the json from the path_to_json
+        # Creates an Employee object for each json object (dictionary)
+        # Adds each created Employee object to self.employees list
         pass
 
     def save_to_json(self, path_to_json):
+        # Convert every Employee from self.employees into a dictionary 
+        # (use method as_dict() which you have to implement in the Employee class)
+        # Build a list of employees where every employee is a dict
+        # json.dump the whole list
         pass
 
     def print_employees(self):
