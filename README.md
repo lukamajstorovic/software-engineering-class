@@ -39,7 +39,7 @@ or delete the repo directory using a File Explorer
 ### Pulling the changes from this repo to your copy of the repo:
 
 ```
-git remote add upstream https://gitlab.com/levara/se-labs-2223-sr
+git remote add upstream https://gitlab.com/levara/se-labs-2223-prp
 git fetch upstream master
 git merge upstream/master
 ```
