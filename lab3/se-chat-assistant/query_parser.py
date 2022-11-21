@@ -4,6 +4,7 @@ from fact_handler import FactHandler
 from dice_handler import DiceHandler
 from rps_handler import RockPaperScissorsHandler
 from love_handler import LoveHandler
+from vaccovid_handler import VacCovidHandler
 
 class QueryNotUnderstoodHandler(QueryHandlerBase):
     def process(self, query):
@@ -36,6 +37,7 @@ class QueryParser:
         JokeHandler,
         RockPaperScissorsHandler,
         LoveHandler,
+        VacCovidHandler,
     ]
 
     def __init__(self, ui):
