@@ -5,6 +5,9 @@ from dice_handler import DiceHandler
 from rps_handler import RockPaperScissorsHandler
 from love_handler import LoveHandler
 from vaccovid_handler import VacCovidHandler
+from translation_hanlder import TranslationHandler
+from hero_handler import HeroHandler
+from weather_handler import WeatherHandler
 
 class QueryNotUnderstoodHandler(QueryHandlerBase):
     def process(self, query):
@@ -38,6 +41,9 @@ class QueryParser:
         RockPaperScissorsHandler,
         LoveHandler,
         VacCovidHandler,
+        TranslationHandler,
+        HeroHandler,
+        WeatherHandler,
     ]
 
     def __init__(self, ui):
