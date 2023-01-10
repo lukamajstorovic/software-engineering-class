@@ -19,6 +19,18 @@
             <p> {{ comment.text }} </p>
         </div>
         {% endfor %}
+        <form action="{% url 'app:submit_comment' image.id %}" method="post">
+            {% csrf_token %}
+            <p>
+                <label for="comment_nick">Nick</label></br>
+                <input type="text" name="nick" id="comment_nick" value="">
+            </p>
+            <p>
+                <label for="comment_text">Komentar</label></br>
+                <input type="text" name="text" id="comment_text" value="">
+            </p>
+            <input type="submit" value="Objavi komentar">
+        </form>
     </div>
 </div>
 {% endblock %}

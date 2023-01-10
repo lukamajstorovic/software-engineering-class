@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.utils import timezone
+from django.urls import reverse
 from .models import Image, Comment
 
 # Create your views here.
@@ -22,3 +24,9 @@ def detail(request, image_id):
         'comments': comments
     }
     return render(request, 'app/detail.html', context)
+
+def submit_comment(request, image_id):
+    image = get_object_or_404(Image, pk=image_id)
+    comment = Comment(image=image, nick=request.POST['nick'], text=request.POST['text'], pub_date=timezone.now())
+    comment.save()
+    return HttpResponseRedirect(reverse('app:detail', args=(image_id,)))
