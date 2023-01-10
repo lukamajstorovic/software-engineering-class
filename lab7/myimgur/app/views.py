@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Image
+from .models import Image, Comment
 
 # Create your views here.
 def home(request):
@@ -16,7 +16,9 @@ def index(request):
 
 def detail(request, image_id):
     image = get_object_or_404(Image, pk=image_id)
+    comments = image.comment_set.all()
     context = {
-        'image': image
+        'image': image,
+        'comments': comments
     }
     return render(request, 'app/detail.html', context)

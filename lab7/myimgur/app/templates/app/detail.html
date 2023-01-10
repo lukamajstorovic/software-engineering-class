@@ -1,9 +1,24 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-<h1 class="detail-h1">{{ image.title }}</h1>
-<div>
-    <p>Objavljeno: {{ image.pub_date }}</p>
-    <img src="{{ image.url }}" style="width:800px;">
+<div class="row">
+    <div class="col-md-6">
+        <h1 class="detail-h1">{{ image.title }}</h1>
+        <div>
+            <p>Objavljeno: {{ image.pub_date }}</p>
+            <img src="{{ image.url }}" class="image--full">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h1>Komentari:</h1>
+        {% for comment in comments %}
+        <div class="comment">
+            <p>
+                <strong>{{ comment.nick }}</strong> {{ comment.pub_date }}
+            </p>
+            <p> {{ comment.text }} </p>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

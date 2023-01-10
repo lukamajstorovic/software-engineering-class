@@ -25,3 +25,15 @@
 .content h1.detail-h1 {
   color:red;
 }
+
+.content .image--full {
+  width: 100%;
+  height: auto;
+}
+
+.comment {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid black;
+}
