@@ -1,13 +1,10 @@
-<html>
-    <head>
-        <title>Naš imgur</title>
-    </head>
-    <body>
-        <h1>MyImgur</h1>
-        <p>Dobrodošli na naš imgur</p>
+{% extends 'app/base.html' %}
 
-        <p>
-            <a href="{% url 'app:index' %}">Idi na sve slike</a>
-        </p>
-    </body>
-</html>
+{% block content %}
+<h1>MyImgur</h1>
+<p>Dobrodošli na naš imgur</p>
+
+<p>
+    <a href="{% url 'app:index' %}">Idi na sve slike</a>
+</p>
+{% endblock %}

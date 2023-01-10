@@ -1,25 +1,17 @@
-<html>
-    <head>
-        <title>Naš imgur</title>
-    </head>
-    <body>
-        <p>
-            <a href="{% url 'home_path' %}">HOME</a>
-        </p>
-        <h1>Sve slike</h1>
-        <p>Dobrodošli na naš imgur</p>
-        {% for image in image_list %}
-            <div>
-                <p>Naziv: 
-                    <a href="{% url 'app:detail' image.id %}">
-                        {{ image.title }}
-                    </a>
-                </p>
-                <p>Objavljeno: {{ image.pub_date }}</p>
-                <img src="{{ image.url }}" style="width:300px;">
-            </div>
-        {% endfor %}
+{% extends 'app/base.html' %}
 
-        
-    </body>
-</html>
+{% block content %}
+<h1>Sve slike</h1>
+<p>Dobrodošli na naš imgur</p>
+{% for image in image_list %}
+<div>
+    <p>Naziv:
+        <a href="{% url 'app:detail' image.id %}">
+            {{ image.title }}
+        </a>
+    </p>
+    <p>Objavljeno: {{ image.pub_date }}</p>
+    <img src="{{ image.url }}" style="width:300px;">
+</div>
+{% endfor %}
+{% endblock %}
