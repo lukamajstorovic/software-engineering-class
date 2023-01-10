@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Naš imgur</title>
+    </head>
+    <body>
+        <p>
+            <a href="{% url 'home_path' %}">HOME</a>
+        </p>
+        <h1>{{ image.title }}</h1>
+        <div>
+            <p>Objavljeno: {{ image.pub_date }}</p>
+            <img src="{{ image.url }}" style="width:800px;">
+        </div>
+    
+
+        
+    </body>
+</html>
