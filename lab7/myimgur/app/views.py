@@ -18,7 +18,7 @@ def index(request):
 
 def detail(request, image_id):
     image = get_object_or_404(Image, pk=image_id)
-    comments = image.comment_set.all()
+    comments = image.comment_set.filter(approved=True)
     context = {
         'image': image,
         'comments': comments

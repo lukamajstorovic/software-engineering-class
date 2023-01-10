@@ -13,6 +13,7 @@ class Comment(models.Model):
     text = models.TextField(blank=False)
     pub_date = models.DateTimeField('Published at')
     nick = models.CharField(max_length=128, blank=False, default='anon')
+    approved = models.BooleanField(default=False, blank=True)
     def __str__(self):
         return f"{self.id}-{self.image.title[:15]}-{self.text}"
     
