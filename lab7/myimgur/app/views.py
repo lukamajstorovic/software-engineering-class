@@ -18,7 +18,10 @@ def index(request):
 
 def detail(request, image_id):
     image = get_object_or_404(Image, pk=image_id)
-    comments = image.comment_set.filter(approved=True)
+    if request.user.is_superuser:
+        comments = image.comment_set.all()
+    else:
+        comments = image.comment_set.filter(approved=True)
     context = {
         'image': image,
         'comments': comments
@@ -30,3 +33,10 @@ def submit_comment(request, image_id):
     comment = Comment(image=image, nick=request.POST['nick'], text=request.POST['text'], pub_date=timezone.now())
     comment.save()
     return HttpResponseRedirect(reverse('app:detail', args=(image_id,)))
+
+def approve_comment(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if request.user.is_superuser:
+        comment.approved = True
+        comment.save()
+    return HttpResponseRedirect(reverse('app:detail', args=(comment.image.id,)))

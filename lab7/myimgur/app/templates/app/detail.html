@@ -17,6 +17,12 @@
                 <strong>{{ comment.nick }}</strong> {{ comment.pub_date }}
             </p>
             <p> {{ comment.text }} </p>
+            {% if user.is_superuser and not comment.approved %}
+            <form action="{% url 'app:approve_comment' comment.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Odobri">
+            </form>
+            {% endif %}
         </div>
         {% endfor %}
         <form action="{% url 'app:submit_comment' image.id %}" method="post">

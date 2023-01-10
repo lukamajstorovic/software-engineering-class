@@ -28,7 +28,11 @@
       </div>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          {{ user.username }}
+          {% if user.is_authenticated %}
+            {{ user.username }} <a href="{% url 'logout' %}">Odjava</a>
+          {% else %}
+            <a href="{% url 'login' %}">Prijava</a>
+          {% endif %}
         </li>
     </nav>
 
