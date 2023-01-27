@@ -11,22 +11,25 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h1>Komentari</h1> 
+            <h1>Komentari</h1>
             {% for comment in comments %}
-                <p class="comment">
-                    <strong>{{comment.nick}}</strong>
-                    ( {{ comment.pub_date }} ) <br/>
-                    {{ comment.text }}
-                    {% if not comment.approved %}
+                {% if comment.approved or user.is_superuser %}
+                    <p class="comment">
+                        <strong>{{comment.nick}}</strong>
+                        ( {{ comment.pub_date }} ) <br />
+                        {% if not comment.approved %}- unapproved {% endif %}
+                        {{ comment.text }}
+                        {% if not comment.approved and user_is_superuser %}
                         <br>
                         <span class="red" style="color: red">
                             <form action="{% url 'app:approve_comment' comment.id %}" method="post">
                                 {% csrf_token %}
-                                <input type="submit" value="Approve" >
+                                <input type="submit" value="Approve">
                             </form>
                         </span>
-                    {% endif %}
-                </p>
+                        {% endif %}
+                    </p>
+                {% endif %}
             {% endfor %}
             <form action="{% url 'app:post_comment' image.id %} " method="post">
                 {% csrf_token %}
@@ -42,7 +45,7 @@
 
                 <input type="submit">
             </form>
-        </div>     
+        </div>
     </div>
 </div>
 

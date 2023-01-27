@@ -26,13 +26,16 @@ def detail(request, image_id):
     return render(request, 'app/detail.html', context)
 
 def post_comment(request, image_id):
-    image = get_object_or_404(Image, pk=image_id)
-    comment = Comment(nick= request.POST['nick'], text=request.POST['text'], image = image, pub_date=timezone.now())
-    comment.save()
+    if request.method == "POST":
+        image = get_object_or_404(Image, pk=image_id)
+        comment = Comment(nick= request.POST['nick'], text=request.POST['text'], image = image, pub_date=timezone.now())
+        comment.save()
     return HttpResponseRedirect(reverse("app:detail", args=[image_id]))
 
 def approve_comment(request, comment_id):
-    comment = get_object_or_404(Comment, pk=comment_id)
-    comment.approved = True
-    comment.save()
-    return HttpResponseRedirect(reverse('app:detail', args=[comment.image.id]))
+    if request.method == "POST" and request.user.is_superuser:
+        comment = get_object_or_404(Comment, pk=comment_id)
+        comment.approved = True
+        comment.save()
+        return HttpResponseRedirect(reverse('app:detail', args=[comment.image.id]))
+    return HttpResponseRedirect("/")
