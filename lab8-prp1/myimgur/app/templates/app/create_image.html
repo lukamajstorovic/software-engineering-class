@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <h1>Submit new image</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label>Title</label>
+            <input type="text" name="title"/>           
+        </p>
+        <p>
+            <label>URL</label>
+            <input type="text" name="url"/>            
+        </p>
+        <p>
+            <input type="submit" value="Snimi sliku"/>
+        </p>
+    </form>
+{% endblock %}

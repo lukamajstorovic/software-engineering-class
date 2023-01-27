@@ -39,3 +39,14 @@ def approve_comment(request, comment_id):
         comment.save()
         return HttpResponseRedirect(reverse('app:detail', args=[comment.image.id]))
     return HttpResponseRedirect("/")
+
+def create_image(request):
+    if request.method == "POST":
+        image = Image.objects.create(
+            title = request.POST['title'],
+            url = request.POST['url'],
+            pub_date = timezone.now()
+        )
+        return HttpResponseRedirect(reverse('app:detail', args=[image.id]))
+    context = {}
+    return render(request, 'app/create_image.html', context)
