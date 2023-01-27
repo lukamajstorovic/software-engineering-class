@@ -28,7 +28,7 @@ def detail(request, image_id):
 def post_comment(request, image_id):
     if request.method == "POST":
         image = get_object_or_404(Image, pk=image_id)
-        comment = Comment(nick= request.POST['nick'], text=request.POST['text'], image = image, pub_date=timezone.now())
+        comment = Comment(user=request.user, text=request.POST['text'], image = image, pub_date=timezone.now())
         comment.save()
     return HttpResponseRedirect(reverse("app:detail", args=[image_id]))
 
