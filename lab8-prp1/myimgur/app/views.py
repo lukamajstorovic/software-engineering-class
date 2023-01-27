@@ -41,8 +41,9 @@ def approve_comment(request, comment_id):
     return HttpResponseRedirect("/")
 
 def create_image(request):
-    if request.method == "POST":
+    if request.method == "POST" and request.user.is_authenticated:
         image = Image.objects.create(
+            user = request.user,
             title = request.POST['title'],
             url = request.POST['url'],
             pub_date = timezone.now()

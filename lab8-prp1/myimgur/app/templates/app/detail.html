@@ -7,6 +7,7 @@
             <h1>{{ image.title }}</h1>
             <div>
                 <p>Objavljeno: {{ image.pub_date }}</p>
+                <p>Objavio: {{ image.use.username }}</p>
                 <img src="{{ image.url }}" class="full-width">
             </div>
         </div>

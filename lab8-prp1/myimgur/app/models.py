@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Image(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     url = models.CharField(max_length=256, blank=False)
     title = models.CharField(max_length=128, blank=False)
     pub_date = models.DateTimeField('Published at')
